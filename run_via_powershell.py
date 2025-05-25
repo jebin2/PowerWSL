@@ -1,20 +1,28 @@
 # run via powershell to get the GUI access for the program
 import subprocess
+import os
+from dotenv import load_dotenv
+
+if os.path.exists(".env"):
+    load_dotenv()
 
 POWERSHELL = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
 
-print("1. CaptionCreator")
-print("2. XPal")
+print("1. gc")
+print("2. xp")
+print("3. other")
 print("0. Exit")
 
-choice = input("Choose an option: ")
+choice = input("Choose an directory option: ")
 if choice == "1":
-    CWD = "/home/jebineinstein/git/CaptionCreator"
+    CWD = os.getenv("CAPTIONCREATOR")
 elif choice == "2":
-    CWD = "/home/jebineinstein/git/XPal"
+    CWD = os.getenv("XPAL")
 elif choice == "0":
     print("Exiting.")
     exit(0)
+else:
+    CWD = input("Enter custom directory: ")
 
 cmd = input("Enter full cmd to run: ")
 

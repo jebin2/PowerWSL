@@ -94,6 +94,7 @@ def auto_mode():
 def main_menu():
     while True:
         print("\n=== WSL SSH + Portproxy Manager ===")
+        print("\nWarning: Run this in Administrator.")
         print("1. Install & configure SSH (with portproxy)")
         print("2. Rebind portproxy if WSL IP has changed")
         print("3. Remove SSH & portproxy configuration")
