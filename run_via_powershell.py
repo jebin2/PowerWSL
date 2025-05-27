@@ -8,26 +8,16 @@ if os.path.exists(".env"):
 
 POWERSHELL = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
 
-print("1. gc")
-print("2. xp")
-print("3. other")
-print("0. Exit")
-
-choice = input("Choose an directory option: ")
-if choice == "1":
-    CWD = os.getenv("CAPTIONCREATOR")
-elif choice == "2":
-    CWD = os.getenv("XPAL")
-elif choice == "0":
+directory = input("Enter working directory or enter quit to exit: ")
+if directory == "quit":
     print("Exiting.")
     exit(0)
-else:
-    CWD = input("Enter custom directory: ")
 
 cmd = input("Enter full cmd to run: ")
 
 # Build full bash command to run inside WSL
-bash_cmd = f"cd '{CWD}' && {cmd}"
+bash_cmd = f"cd '{directory}' && {cmd}"
+print(bash_cmd)
 
 # Run it through PowerShell
 subprocess.run([
